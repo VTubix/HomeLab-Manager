@@ -28,3 +28,6 @@
 @media(max-width:740px){.docker-item{flex-wrap:wrap}.docker-open{width:100%}.docker-group-header{padding:11px}.docker-group-header .collapse{gap:7px}.docker-group-header .collapse strong{font-size:13px}}
 
 #app-updates {border-color:#34666c;} #update-status {overflow-wrap:anywhere;} #install-update {margin-bottom:12px;}
+
+/* v0.3 configurable services and server identities */
+.config-item{padding:12px;margin:12px 0;border:1px solid #30445e;border-radius:10px;background:#101e32}.config-item p{overflow-wrap:anywhere}.config-item label{margin:10px 0}.settings-card form{border-top:1px solid #2d3d53;margin-top:14px;padding-top:10px}.settings-card h3{font-size:15px;margin:18px 0 10px}.settings-card button{cursor:pointer}

@@ -1,0 +1,40 @@
+# Dependencies and builds
+node_modules/
+dist/
+src-tauri/target/
+src-tauri/gen/
+*.log
+
+# Signing secrets and private local configuration
+*.key
+*.p12
+*.pfx
+*.pem
+*.env
+.env
+.env.*
+!.env.example
+.private/
+.secrets/
+local-config/
+*.local.json
+*.local.js
+*.db
+*.sqlite
+*.sqlite3
+
+# Local IDE / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Private settings and credentials
+*.key
+*.key.pub
+*.env
+.env*
+*encrypted.json
+*backup*.json
+local-test*/
+HomeLab-LocalUpdate-Keys/
