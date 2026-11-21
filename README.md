@@ -1,51 +1,49 @@
-# HomeLab Manager v0.3.0
+# HomeLab Manager
 
-Öffentliches Grundgerüst für einen Beszel-basierten HomeLab Manager (Tauri 2 + Vite).
+**Dein Homelab auf einen Blick.** HomeLab Manager ist eine Desktop-Anwendung für Windows und Linux, mit der du deine Server über [Beszel](https://beszel.dev/) im Blick behältst.
 
-## Start unter Windows
+> **Voraussetzung:** Ein erreichbarer Beszel-Hub mit eingebundenen Systemen. HomeLab Manager ergänzt Beszel und ersetzt es nicht.
 
-```powershell
-npm.cmd install
-npm.cmd run tauri dev
-```
+## Funktionen
 
-## Neu in v0.3.0
+- **Serverübersicht:** Über Beszel erkannte Server anzeigen, umbenennen, sortieren und mit eigenen Icons oder Weblinks versehen.
+- **Monitoring:** Von Beszel bereitgestellte Werte wie CPU, Arbeitsspeicher, Temperatur, Laufwerke und Verläufe ansehen.
+- **Docker-Ansicht:** Container anzeigen, wenn Docker-Daten vorliegen; eigene Gruppen erstellen, bearbeiten und löschen.
+- **Eigene Webdienste:** Links auf Dienste im Homelab hinzufügen und individuell gestalten.
+- **Personalisierung:** Hintergrundbilder, Logos und Reihenfolge anpassen.
+- **Sicherung und Wiederherstellung:** Konfiguration exportieren und importieren; optional ein verschlüsseltes Komplettbackup erstellen.
+- **Updates:** Signierte Desktop-Updates unter Windows, sobald eine neuere kompatible Version veröffentlicht wird.
 
-- Automatisch erkannte Beszel-Server mit individuellen Anzeigenamen, Weblinks und hochgeladenen Icons
-- Frei definierbare Docker-Gruppen und Containerzuordnungen
-- Eigene Webdienste hinzufügen
-- Docker-Datenquelle auswählen
-- Server- und Laufwerksüberwachung, Docker-Gruppen, Verlaufsdiagramme, lokale Designanpassungen
+Deine persönlichen Einstellungen werden lokal auf deinem Gerät gespeichert. Bei einer frischen Installation ist keine Beszel-Adresse voreingestellt.
 
-Alle individuellen Adressen und Bilder werden **lokal auf dem jeweiligen Gerät** gespeichert und gehören nicht ins öffentliche Repository. Eine GitHub-Updatequelle muss vor Erstellung eines Release-Installers gemäß `UPDATES-EINRICHTEN.md` eingerichtet werden.
+## Installation
+
+Passende Installationsdateien findest du unter **[GitHub Releases](https://github.com/VTubix/HomeLab-Manager/releases)**, sobald die jeweiligen Pakete veröffentlicht sind.
+
+- **Windows:** Windows-Installer herunterladen und ausführen.
+- **Linux:** Das angebotene Linux-Paket passend zu deinem System herunterladen. Die automatische Aktualisierung unter Linux ist noch nicht abschließend getestet.
+
+## Erste Schritte
+
+1. HomeLab Manager starten.
+2. Die URL deines eigenen Beszel-Hubs eingeben.
+3. Mit deinem Beszel-Konto anmelden.
+4. Server, Icons, Verknüpfungen und Gruppen nach deinen Wünschen einrichten.
+
+Die Docker-Ansicht erscheint nur, wenn Beszel passende Containerdaten liefert. Neue Nutzer starten ohne vorgefertigte Docker-Gruppen.
+
+## Backups
+
+Unter **Einstellungen → Konfiguration & Sicherung** kannst du Einstellungen sichern, exportieren und importieren. Beim Export kannst du den Speicherort auswählen. Eine Konfigurationssicherung kann die Beszel-Adresse enthalten, damit du sie auf einem neuen Rechner übernehmen und bei Bedarf ändern kannst.
+
+Beim optionalen **verschlüsselten Komplettbackup** brauchst du zur Wiederherstellung das selbst festgelegte Passwort. Behandle Backup-Dateien vertraulich: Sie können interne Adressen und persönliche Einstellungen enthalten.
 
 ## Sicherheit
 
-Keine Zugangsdaten oder lokalen IP-Adressen in den Quellcode committen. Die App verwaltet keine Docker-Container, sondern zeigt Beszel-Statistiken und öffnet konfigurierte Webseiten. Bei HTTP-Beszel auf dem Heimnetz bitte nicht außerhalb eines vertrauenswürdigen Netzwerks verwenden. Für öffentliche Nutzung HTTPS oder VPN bevorzugen.
+Nutze nach Möglichkeit **HTTPS oder ein VPN**, besonders bei Zugriffen außerhalb deines Heimnetzes. HomeLab Manager zeigt von Beszel bereitgestellte Daten an und ist kein eigenständiges Tool zur Verwaltung von Docker-Containern oder Servern.
 
-## Dauerhafte Einstellungen, Updates und Backups (in v0.3.0 enthalten)
+HomeLab Manager ist ein unabhängiges Projekt und keine offizielle Beszel-Anwendung.
 
-- Desktop-Konfiguration wird unter dem betriebssystemspezifischen **Tauri-App-Datenverzeichnis** als `preferences-v1.json` gespeichert, **nicht** im Installationsordner oder Repository.
-- Beim ersten Start der neuen Fassung werden Einstellungen aus dem bisherigen WebView-Speicher `homelab.v02.preferences` übernommen, falls noch keine native Konfigurationsdatei existiert. Die bestehende App-Kennung `de.homelab.manager` bleibt gleich.
-- Individuelle Hintergrundbilder, Logos und Servericons bleiben als separate lokale Dateien im App-Datenverzeichnis.
-- Vor einem über die App ausgeführten Update wird eine Kopie der Einstellungen **und Bilder** im Unterordner `backups/backup-<Zeitstempel>/` angelegt. Wenn diese Sicherung fehlschlägt, beginnt die Installation nicht.
-- Unter **Einstellungen → Konfiguration & Sicherung** sind manuelle lokale Sicherung sowie JSON-Export und -Import verfügbar. Der Export kann Bilder und private Webadressen enthalten: **niemals in das öffentliche Repository hochladen**.
-- Beszel-Passwörter und Anmeldungstokens sind nicht Bestandteil der Konfigurationsdatei oder des Exports; nach einem Neustart kann eine erneute Anmeldung erforderlich sein.
-- Die neue native Dateispeicherung ist erst nach einem Test in einem echten Tauri-Fenster vollständig bestätigt. Vor dem ersten öffentlichen Release bitte Backup, Export, Import und Update an einer Testinstallation überprüfen.
+## Änderungen
 
-**Linux:** Speicherort und Identität müssen bei späteren Linux-Paketen gleich bleiben, damit Einstellungen bei Updates erhalten bleiben. Einstellungen verschiedener Computer werden derzeit nicht automatisch synchronisiert.
-
-
-## Ergänzung: geschützte Sitzungen und verschlüsselte Backups
-Details siehe `SICHERHEIT-UND-MIGRATION.md`. Diese v0.3.0 ist eine **Testfassung**, nicht für öffentliche Releases freigegeben, bevor Windows-/Linux-Build und Migration getestet sind.
-
-
-## Allgemeine Nutzung / öffentliche Veröffentlichung
-
-Die Anwendung enthält **keine private Beszel-Adresse oder Zugangsdaten**. Nach einer frischen Installation trägt jeder Nutzer seine eigene Beszel-Adresse ein. Server werden ausschließlich aus Beszel gelesen. Persönliche Namen, Icons, URLs, Docker-Gruppen und Sortierungen werden lokal gespeichert.
-
-**Docker-Gruppen:** Neue Installationen beginnen ohne vorgefertigte Gruppen. Erst wenn Beszel Containerdaten liefert, wird der Docker-Bereich angezeigt. Container starten unter „Nicht zugeordnet“ und können selbst angelegten Gruppen zugewiesen werden.
-
-**Backups:** Lokale Sicherungen und Exporte erlauben die Auswahl des Speicherortes. JSON-Backups enthalten die Beszel-Adresse, aber keine Zugangsdaten. Das optionale verschlüsselte Komplettbackup kann einen Sitzungstoken enthalten.
-
-**Noch nicht veröffentlichungsfertig:** `tauri.conf.json` enthält Platzhalter für GitHub-Releases und den öffentlichen Signier-Schlüssel. Bevor eine Release-EXE erstellt wird, diese Konfiguration ausfüllen und einen Windows-/Linux-Build sowie ein signiertes Update testen. Details in `FINAL-0.3.0-HINWEISE.md`.
+Siehe [Changelog für v0.3.0](CHANGELOG-0.3.0.md).

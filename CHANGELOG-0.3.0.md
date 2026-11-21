@@ -1,14 +1,14 @@
-# HomeLab Manager 0.3.0 – Entwicklungsfassung
+# HomeLab Manager v0.3.0 – Änderungen
 
-- Individuelle Servernamen, Icons, Weblinks, Docker-Gruppen und zusätzliche Webdienste.
-- Monitoring über Beszel, Speicher und Docker-Ansichten sowie Personalisierung beibehalten.
-- Native Speicherung von Einstellungen im App-Datenordner, unabhängig vom App-Build.
-- Einmalige Übernahme vorhandener `homelab.v02.preferences`-Einstellungen.
-- Lokales Backup vor durch die App installierten GitHub-Updates, inklusive der eigenen Bilder.
-- Einstellungen: manuelles Backup, JSON-Export und JSON-Import (einschließlich Bilder).
-- **Version bleibt 0.3.0.** GitHub-Updater benötigt vor Release noch Signierschlüssel und Repository-Einrichtung.
+- Server automatisch aus Beszel anzeigen und mit Namen, Icons und Weblinks individuell gestalten.
+- Eigene Webdienste ergänzen.
+- Docker-Container bei verfügbaren Docker-Daten anzeigen und in selbst erstellten Gruppen organisieren.
+- Docker-Gruppen erstellen, umbenennen und löschen; keine vorgegebenen Gruppen beim ersten Start.
+- Server, Gruppen und Laufwerke individuell sortieren.
+- Hintergrundbild, Logo und weitere persönliche Einstellungen lokal speichern.
+- Konfigurationssicherungen exportieren und importieren; Speicherort beim Export auswählen.
+- Optionales verschlüsseltes Komplettbackup und Wiederherstellung.
+- Beszel-Adresse bei einer Wiederherstellung übernehmen oder anpassen.
+- Gespeicherte Anmeldung und Unterstützung für signierte Windows-Updates.
 
-### Nachtrag: Trennung zwischen Erststart und Datenmigration
-- Kein automatisches Übernehmen der alten Beszel-Adresse aus WebView-localStorage beim nativen Erststart.
-- Bewusste Übernahme alter v0.2.x-Einstellungen oder neue Einrichtung auswählbar.
-- Automatischer Sitzungsstart nur bei übereinstimmender, bereits gespeicherter Beszel-Adresse.
+**Voraussetzung:** Ein erreichbarer Beszel-Hub; verfügbare Messwerte und Container hängen von den eingebundenen Systemen ab.
